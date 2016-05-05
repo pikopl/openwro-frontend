@@ -1,0 +1,34 @@
+<div class="col-lg-4" data-ng-controller="carParkCtrl" data-ng-init="loadLatestEntry('1')">
+    <!--
+    <div class="panel panel-default" data-ng-show="loading">
+        <center><i class="fa fa-spin fa-spinner"></i></center>
+    </div>
+    -->
+    <div class="panel panel-{{carParkLoadColor}}">
+        <div class="panel-heading font-bold">
+            <span ng-if="readTime.outDated"><i class="fa fa-{{carParkLoad.color}}" style="color:{{carParkLoad.color}}"></i></span> {{latestEntry.carPark.name}}
+        </div>
+        <div class="panel-body text-center">
+            <h4>{{latestEntry.freePlaceAmount}}<small> wolnych miejsc</small></h4>
+            <small class="text-muted block">Trend: <span ng-if="trend.value === 0">bez zmian</span><span ng-if="trend.value !== 0"><i class="fa {{trend.icon}}" style="color:{{trend.color}}"></i> {{trend.value}} {{trend.text}}</span></small>
+            <div class="inline">
+                <div ui-jq="easyPieChart"  ui-options="{
+                     percent: '{{carParkLoad.value}}',
+                     lineWidth: 10,
+                     trackColor: '{{app.color.light}}',
+                     barColor: '{{carParkLoad.color}}',
+                     scaleColor: '{{app.color.light}}',
+                     size: 188,
+                     lineCap: 'butt',
+                     animate: 1000
+                     }">
+                    <div>
+                        <span class="h2 m-l-sm step">{{carParkLoad.value}}</span>%
+                        <div class="text text-sm">zajętości</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer"><small>Odczytano: {{readTime.useDate ? (readTime.value | date: 'HH:mm:ss dd-MM-yyyy') : readTime.value}} </small></div>
+    </div>
+</div>
