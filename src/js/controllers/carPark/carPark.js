@@ -3,13 +3,18 @@
 angular.module('app')
 
 
-        .controller('carParkCtrl', ['$scope', '$interval', 'dateFilter', 'carParkDataService', function ($scope, $interval, dateFilter, carParkDataService) {
+        .controller('carParkCtrl', ['$scope', '$interval', 'carParkDataService', function ($scope, $interval, carParkDataService) {
               
-            //$scope.updateTime = dateFilter(new Date(), 'HH:mm:ss dd-MM-yyyy');
+            var restRequestInterval = 300000; //every 5 min.
+            var timeUpdateInterval = 1000; //every 1 sec.
+            var milisInMin = 60000;
+            var milisInSec = 1000;
+            $scope.updateTime = Math.round((restRequestInterval / milisInSec));
             $scope.loadLatestEntries = function(){
                 return carParkDataService.getLatestEntries($scope).then(function (latestEntries) {
                     $scope.latestEntries = latestEntries;
                     $scope.latestEntries.forEach(prepareData);
+                    
                 });
             };
             
@@ -48,7 +53,6 @@ angular.module('app')
                     latestEntry.carParkLoad = carParkLoad;
                     
                     //prepare read time
-                    var milisInMin = 60000;
                     var readTime = {};
                     readTime.useDate = false;
                     readTime.value = Math.round((new Date() - latestEntry.timestamp) / milisInMin); 
@@ -70,8 +74,11 @@ angular.module('app')
             var timeoutIdForTimeUpdate, timeoutIdForRestRequest;
             
             function updateTime() {
-                $scope.updateTime = dateFilter(new Date(), 'HH:mm:ss dd-MM-yyyy');
+                $scope.updateTime = $scope.updateTime - 1;
+                if ($scope.updateTime === 0){
+                    $scope.updateTime = Math.round((restRequestInterval / milisInSec));;
                 }
+            }
             
 
             $scope.$on('$destroy', function() {
@@ -80,8 +87,8 @@ angular.module('app')
             });
 
             // start the UI update process; save the timeoutId for canceling
-            timeoutIdForTimeUpdate = $interval(updateTime, 1000);
+            timeoutIdForTimeUpdate = $interval(updateTime, timeUpdateInterval);
             
-            timeoutIdForRestRequest = $interval($scope.loadLatestEntries, 10000);
+            timeoutIdForRestRequest = $interval($scope.loadLatestEntries, restRequestInterval); //every 5 min.
 }]);
 
