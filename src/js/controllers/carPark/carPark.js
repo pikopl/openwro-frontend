@@ -3,8 +3,9 @@
 angular.module('app')
 
 
-        .controller('carParkCtrl', function ($scope, carParkDataService) {
-               
+        .controller('carParkCtrl', ['$scope', '$interval', 'dateFilter', 'carParkDataService', function ($scope, $interval, dateFilter, carParkDataService) {
+              
+            //$scope.updateTime = dateFilter(new Date(), 'HH:mm:ss dd-MM-yyyy');
             $scope.loadLatestEntries = function(){
                 return carParkDataService.getLatestEntries($scope).then(function (latestEntries) {
                     $scope.latestEntries = latestEntries;
@@ -66,6 +67,18 @@ angular.module('app')
                     }
                     latestEntry.readTime = readTime;
             };
-           
-});
+            var timeoutId;
+            
+            function updateTime() {
+                $scope.updateTime = dateFilter(new Date(), 'HH:mm:ss dd-MM-yyyy');
+                }
+            
+
+            $scope.$on('$destroy', function() {
+                $interval.cancel(timeoutId);
+            });
+
+            // start the UI update process; save the timeoutId for canceling
+            timeoutId = $interval(updateTime, 1000);
+}]);
 

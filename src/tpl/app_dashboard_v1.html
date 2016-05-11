@@ -3,7 +3,7 @@
         app.settings.asideDock = false;
      ">
     <!-- main -->
-    <div class="col">
+    <div class="col" data-ng-controller="carParkCtrl" data-ng-init="loadLatestEntries()">
         <!-- main header -->
         <div class="bg-light lter b-b wrapper-md">
             <div class="row">
@@ -13,10 +13,17 @@
                 </div>
             </div>
         </div>
+        <div class="bg-light lter b-b wrapper-md">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <small class="text-muted">Nastepne odswiezenie danych o {{updateTime}}</small>
+                </div>
+            </div>
+        </div>
         <!-- / main header -->
         <div class="wrapper-md">
             <!-- stats -->
-            <div class="row" data-ng-controller="carParkCtrl" data-ng-init="loadLatestEntries()">
+            <div class="row">
                 <div data-ng-repeat="latestEntry in latestEntries">
                     <div class="col-lg-4">
                     <div class="panel panel-default" data-ng-show="loading">
