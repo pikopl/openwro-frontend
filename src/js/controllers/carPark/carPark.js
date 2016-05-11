@@ -67,7 +67,7 @@ angular.module('app')
                     }
                     latestEntry.readTime = readTime;
             };
-            var timeoutId;
+            var timeoutIdForTimeUpdate, timeoutIdForRestRequest;
             
             function updateTime() {
                 $scope.updateTime = dateFilter(new Date(), 'HH:mm:ss dd-MM-yyyy');
@@ -75,10 +75,13 @@ angular.module('app')
             
 
             $scope.$on('$destroy', function() {
-                $interval.cancel(timeoutId);
+                $interval.cancel(timeoutIdForTimeUpdate);
+                $interval.cancel(timeoutIdForRestRequest);
             });
 
             // start the UI update process; save the timeoutId for canceling
-            timeoutId = $interval(updateTime, 1000);
+            timeoutIdForTimeUpdate = $interval(updateTime, 1000);
+            
+            timeoutIdForRestRequest = $interval($scope.loadLatestEntries, 10000);
 }]);
 
