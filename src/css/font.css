@@ -8,11 +8,11 @@
   font-family: 'Source Sans Pro';
   font-style: normal;
   font-weight: 400;
-  src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url('../fonts/sourcesanspro/sourcesanspro.woff') format('woff');
+  src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url('http://fonts.gstatic.com/s/sourcesanspro/v9/ODelI1aHBYDBqgeIAH2zlMiuYsbw7ku9F25X8Z55niY.woff2') format('woff2');
 }
 @font-face {
   font-family: 'Source Sans Pro';
   font-style: normal;
   font-weight: 700;
-  src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url('../fonts/sourcesanspro/sourcesanspro-bold.woff') format('woff');
+  src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url('http://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGDKEjXUiyhWCZIsL2JQb0_M.woff2') format('woff2');
 }
