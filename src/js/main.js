@@ -12,7 +12,7 @@ angular.module('app')
 
       // config
       $scope.app = {
-        name: 'OpenWro',
+        name: 'OpenData',
         version: '0.0.1',
         // for chart colors
         color: {
