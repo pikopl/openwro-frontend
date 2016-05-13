@@ -37,7 +37,7 @@
                     </div>
                     <div class="panel panel-{{latestEntry.carParkLoad.color}}" data-ng-show="!loading">
                         <div class="panel-heading font-bold">
-                            <span ng-if="latestEntry.readTime.outDated"><i class="fa fa-{{latestEntry.carParkLoad.color}}" style="color:{{latestEntry.carParkLoad.color}}"></i></span> {{latestEntry.carPark.name}}
+                            <span ng-if="latestEntry.readTime.outDated"><i class="fa fa-{{latestEntry.carParkLoad.color}}" style="color:{{latestEntry.carParkLoad.color}}"></i></span><span ng-if="latestEntry.carPark.name.indexOf('Parking') !== 0"> Parking</span> {{latestEntry.carPark.name}}
                         </div>
                         <div class="panel-body text-center">
                             <h4>{{latestEntry.freePlaceAmount}}<small> wolnych miejsc</small></h4>
