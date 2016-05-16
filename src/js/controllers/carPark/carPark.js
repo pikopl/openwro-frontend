@@ -3,7 +3,7 @@
 angular.module('app')
 
 
-        .controller('carParkCtrl', ['$scope', '$interval', 'carParkDataService', function ($scope, $interval, carParkDataService) {
+        .controller('carParkCtrl', ['$scope', '$interval', 'dateFilter', 'carParkDataService', function ($scope, $interval, dateFilter, carParkDataService) {
               
             var restRequestInterval = 300000; //every 5 min.
             var timeUpdateInterval = 1000; //every 1 sec.
@@ -58,7 +58,7 @@ angular.module('app')
                     readTime.value = Math.round((new Date() - latestEntry.timestamp) / milisInMin); 
                     readTime.outDated = false;
                     if (readTime.value < 60){
-                        readTime.value = readTime.value + ' min. temu';
+                        readTime.value = readTime.value + ' min. temu (' + dateFilter(latestEntry.timestamp, 'HH:mm:ss dd-MM-yyyy') + ')';
                     }else {
                         readTime.useDate = true;
                         readTime.value = latestEntry.timestamp;
