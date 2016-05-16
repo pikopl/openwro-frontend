@@ -42,12 +42,15 @@ angular.module('app')
                     carParkLoad.value = Math.round(((latestEntry.carPark.capacity - latestEntry.freePlaceAmount) / latestEntry.carPark.capacity) * 100);
                     if (carParkLoad.value >= 0 && carParkLoad.value < 70){
                         carParkLoad.color = "success";
+                        carParkLoad.font = "none";
                         carParkLoad.chartColor = $scope.app.color.success;
                     }else if (carParkLoad.value >= 70 && carParkLoad.value < 90){
                         carParkLoad.color = "warning";
+                        carParkLoad.font = "warning";
                         carParkLoad.chartColor = $scope.app.color.warning;
                     }else{ //carParkLoad.value >= 90
                         carParkLoad.color = "danger";
+                        carParkLoad.font = "times-circle";
                         carParkLoad.chartColor = $scope.app.color.danger;
                     }
                     latestEntry.carParkLoad = carParkLoad;
@@ -65,8 +68,10 @@ angular.module('app')
                         readTime.outDated = true;
                         if (readTime.value >= 60 && readTime.value < 1440){
                             carParkLoad.color = "warning";
+                            carParkLoad.font = "warning";
                         }else{
                             carParkLoad.color = "info";
+                            carParkLoad.font = "info";
                         }
                     }
                     latestEntry.readTime = readTime;
