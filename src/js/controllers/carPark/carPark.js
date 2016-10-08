@@ -40,15 +40,15 @@ angular.module('app')
                     //prepare chart
                     var carParkLoad = {};
                     carParkLoad.value = Math.round(((latestEntry.carPark.capacity - latestEntry.freePlaceAmount) / latestEntry.carPark.capacity) * 100);
-                    if (carParkLoad.value >= 0 && carParkLoad.value < 70){
+                    if (carParkLoad.value >= 0 && carParkLoad.value < 80){
                         carParkLoad.color = "success";
                         carParkLoad.font = "none";
                         carParkLoad.chartColor = $scope.app.color.success;
-                    }else if (carParkLoad.value >= 70 && carParkLoad.value < 90){
+                    }else if (carParkLoad.value >= 80 && carParkLoad.value < 99){
                         carParkLoad.color = "warning";
                         carParkLoad.font = "warning";
                         carParkLoad.chartColor = $scope.app.color.warning;
-                    }else{ //carParkLoad.value >= 90
+                    }else{ //carParkLoad.value >= 99
                         carParkLoad.color = "danger";
                         carParkLoad.font = "times-circle";
                         carParkLoad.chartColor = $scope.app.color.danger;
