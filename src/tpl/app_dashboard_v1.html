@@ -40,7 +40,7 @@
                             <span ng-if="latestEntry.carParkLoad.font !== 'none'"><i class="fa fa-{{latestEntry.carParkLoad.font}}" style="color:{{latestEntry.carParkLoad.color}}"></i></span><span ng-if="latestEntry.carPark.name.indexOf('Parking') !== 0"> Parking</span> {{latestEntry.carPark.name}}
                         </div>
                         <div class="panel-body text-center">
-                            <h4>{{latestEntry.freePlaceAmount}}<small> wolnych miejsc</small></h4>
+                            <h3>{{latestEntry.freePlaceAmount}}<small> wolnych miejsc</small></h3>
                             <small class="text-muted block">Trend: <span ng-if="latestEntry.trend.value === 0">bez zmian</span><span ng-if="latestEntry.trend.value !== 0"><i class="fa {{latestEntry.trend.icon}}" style="color:{{latestEntry.trend.color}}"></i> {{latestEntry.trend.value}} {{latestEntry.trend.text}}</span></small>
                             <div class="inline">
                                 <div ui-jq="easyPieChart"  ui-options="{
