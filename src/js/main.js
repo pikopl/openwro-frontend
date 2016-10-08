@@ -12,7 +12,7 @@ angular.module('app')
 
       // config
       $scope.app = {
-        name: 'OpenData',
+        name: 'gdzieZaparkuje.pl',
         version: '0.0.1',
         // for chart colors
         color: {
