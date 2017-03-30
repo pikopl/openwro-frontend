@@ -58,7 +58,10 @@ angular.module('app')
                     //prepare read time
                     var readTime = {};
                     readTime.useDate = false;
-                    readTime.value = Math.round((new Date() - latestEntry.timestamp) / milisInMin); 
+                    readTime.value = Math.round((new Date() - latestEntry.timestamp) / milisInMin);
+                    if (readTime.value < 0){
+                        readTime.value = 0;
+                    }
                     readTime.outDated = false;
                     if (readTime.value < 60){
                         readTime.value = readTime.value + ' min. temu (' + dateFilter(latestEntry.timestamp, 'HH:mm:ss dd-MM-yyyy') + ')';
