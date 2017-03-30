@@ -13,7 +13,7 @@ angular.module('app')
       // config
       $scope.app = {
         name: 'gdzieZaparkuje.pl',
-        version: '0.0.1',
+        version: '0.1.1',
         // for chart colors
         color: {
           primary: '#7266ba',
